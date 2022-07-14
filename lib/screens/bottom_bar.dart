@@ -1,7 +1,5 @@
-import 'dart:developer';
-
 import 'package:book_tickets/screens/home_screen.dart';
-import 'package:book_tickets/util.dart';
+import 'package:book_tickets/utils/app_style.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -30,9 +28,6 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Title'),
-      ),
       body: Center(child: _widgetOption[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemTapped,
