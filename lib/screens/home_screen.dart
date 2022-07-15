@@ -1,3 +1,4 @@
+import 'package:book_tickets/screens/hotel_view.dart';
 import 'package:book_tickets/screens/ticket_view.dart';
 import 'package:book_tickets/utils/app_style.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
@@ -103,7 +104,41 @@ class HomeScreen extends StatelessWidget {
                 TicketView(),
               ],
             ),
-          )
+          ),
+          const Gap(5),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Hotels',
+                  style: Style.headLineStyle2,
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    'View all',
+                    style: Style.textStyle.copyWith(color: Style.primaryColor),
+                  ),
+                )
+              ],
+            ),
+          ),
+          const Gap(15),
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              children: const [
+                HotelView(),
+                Gap(20),
+                HotelView(),
+              ],
+            ),
+          ),
+          const Gap(20),
         ],
       ),
     );
