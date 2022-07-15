@@ -3,15 +3,18 @@ import 'package:book_tickets/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+// ignore: must_be_immutable
 class HotelView extends StatelessWidget {
-  const HotelView({Key? key}) : super(key: key);
+  Map<String, dynamic> hotel;
+  HotelView({Key? key, required this.hotel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
-    return SizedBox(
+    return Container(
       width: size.width * 0.6,
       height: 300,
+      margin: const EdgeInsets.only(right: 20),
       child: Stack(
         children: [
           ClipRRect(
@@ -30,7 +33,7 @@ class HotelView extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image: const AssetImage('assets/images/one.png'),
+                    image: AssetImage('assets/images/${hotel['image']}'),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.1),
@@ -48,21 +51,21 @@ class HotelView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Opensapce',
-                    style: TextStyle(
+                  Text(
+                    '${hotel['place']}',
+                    style: const TextStyle(
                       color: Colors.white60,
                       fontSize: 15,
                     ),
                   ),
                   const Gap(10),
                   Text(
-                    'London',
+                    '${hotel['destination']}',
                     style: Style.headLineStyle3.copyWith(color: Colors.white),
                   ),
                   const Gap(15),
                   Text(
-                    '\$40 / night',
+                    '${hotel['price']} / night',
                     style: Style.headLineStyle.copyWith(color: Colors.white),
                   ),
                 ],

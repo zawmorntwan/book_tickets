@@ -1,12 +1,15 @@
 import 'package:book_tickets/screens/hotel_view.dart';
 import 'package:book_tickets/screens/ticket_view.dart';
+import 'package:book_tickets/utils/app_info_list.dart';
 import 'package:book_tickets/utils/app_style.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -129,13 +132,13 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20),
             child: Row(
-              children: const [
-                HotelView(),
-                Gap(20),
-                HotelView(),
-              ],
+              children: hotelList
+                  .map(
+                    (hotel) => HotelView(hotel: hotel),
+                  )
+                  .toList(),
             ),
           ),
           const Gap(20),
